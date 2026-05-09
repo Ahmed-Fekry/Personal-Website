@@ -248,6 +248,18 @@ section{position:relative;z-index:10}
 /* ─── FOOTER ─────────────────────────────── */
 footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);font-family:var(--mono);font-size:.62rem;color:var(--muted);letter-spacing:.08em;position:relative;z-index:10}
 
+/* ─── IMAGE MODAL ────────────────────────── */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:flex;align-items:center;justify-content:center;z-index:9999;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;padding:2rem}
+.modal.open{opacity:1;visibility:visible}
+.modal-window{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--glow),0 0 50px rgba(0,0,0,.8);width:auto;height:auto;max-width:500px;display:flex;flex-direction:column;overflow:hidden}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.2rem;border-bottom:1px solid var(--border);background:var(--surface2);cursor:grab;flex-shrink:0}
+.modal-header:active{cursor:grabbing}
+.modal-title{font-family:var(--mono);font-size:.75rem;color:var(--g);letter-spacing:.1em;text-transform:uppercase;flex:1}
+.modal-btn{width:24px;height:24px;display:flex;align-items:center;justify-content:center;background:rgba(0,255,65,.1);border:1px solid var(--border);color:var(--g);cursor:pointer;border-radius:2px;margin-left:.5rem;font-size:.9rem;transition:all .2s}
+.modal-btn:hover{background:rgba(0,255,65,.2);border-color:var(--g);box-shadow:0 0 8px rgba(0,255,65,.3)}
+.modal-content{padding:1rem;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.modal-img{max-width:100%;max-height:100%;width:auto;height:auto;aspect-ratio:auto;border-radius:4px;box-shadow:0 0 20px rgba(0,255,65,.2)}
+
 /* ─── ANIMATIONS ─────────────────────────── */
 @keyframes fu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 
@@ -359,7 +371,7 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
     <div class="hero-img-wrap">
       <div class="hero-img-frame">
         <!-- Replace src below with your photo -->
-        <img id="hero-photo" src="" alt="Ahmed Fikry" style="display:none">
+        <img id="hero-photo" src="./personal website/personal image.png" alt="Ahmed Fikry" style="">
         <div class="hero-img-placeholder" id="hero-ph">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
           <p>[ your photo here ]</p>
@@ -555,16 +567,16 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
     </p>
     <!-- 10-image gallery -->
     <div class="startup-gallery rev d2">
-      <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg>photo</div>
-      <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg>photo</div>
-      <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg>photo</div>
-      <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg>photo</div>
-      <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg>photo</div>
-      <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg>photo</div>
-      <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg>photo</div>
-      <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg>photo</div>
-      <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg>photo</div>
-      <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M8 21h8M12 17v4"/></svg>photo</div>
+      <div class="img-ph clickable-img" data-src="personal website/hobbies/eterpre/1.png"><img src="personal website/hobbies/eterpre/1.png" alt="Startup photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="img-ph clickable-img" data-src="personal website/hobbies/eterpre/2.png"><img src="personal website/hobbies/eterpre/2.png" alt="Startup photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="img-ph clickable-img" data-src="personal website/hobbies/eterpre/3.png"><img src="personal website/hobbies/eterpre/3.png" alt="Startup photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="img-ph clickable-img" data-src="personal website/hobbies/eterpre/4.png"><img src="personal website/hobbies/eterpre/4.png" alt="Startup photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="img-ph clickable-img" data-src="personal website/hobbies/eterpre/5.png"><img src="personal website/hobbies/eterpre/5.png" alt="Startup photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="img-ph clickable-img" data-src="personal website/hobbies/eterpre/6.png"><img src="personal website/hobbies/eterpre/6.png" alt="Startup photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="img-ph clickable-img" data-src="personal website/hobbies/eterpre/7.jpg"><img src="personal website/hobbies/eterpre/7.jpg" alt="Startup photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="img-ph clickable-img" data-src="personal website/hobbies/eterpre/8.png"><img src="personal website/hobbies/eterpre/8.png" alt="Startup photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="img-ph clickable-img" data-src="personal website/hobbies/eterpre/9.JPG"><img src="personal website/hobbies/eterpre/9.JPG" alt="Startup photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+      <div class="img-ph clickable-img" data-src="personal website/hobbies/eterpre/10.jpg"><img src="personal website/hobbies/eterpre/10.jpg" alt="Startup photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
     </div>
     <div class="timeline">
       <div class="tl-item rev">
@@ -625,18 +637,18 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
           <div class="hob-icon">🏋️</div>
         </div>
         <div class="hob-imgs cols3">
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
+            <div class="img-ph clickable-img" data-src="personal website/hobbies/gym and sports/1.png"><img src="personal website/hobbies/gym and sports/1.png" alt="Gym photo"></div>
+            <div class="img-ph clickable-img" data-src="personal website/hobbies/gym and sports/2.png"><img src="personal website/hobbies/gym and sports/2.png" alt="Gym photo"></div>
+            <div class="img-ph clickable-img" data-src="personal website/hobbies/gym and sports/3.png"><img src="personal website/hobbies/gym and sports/3.png" alt="Gym photo"></div>
         </div>
         <div class="hob-body">
           <p>I've been training since I was 19, developing a strong passion for fitness and strength. What interests me is not just physical progress, but the science behind exercise, recovery, and performance — proper technique, exercise mechanics, and continuous improvement.</p>
           <p>I enjoy nutrition and meal planning, understanding how food supports performance and recovery. I also love outdoor walking over treadmill cardio — fresh air and natural movement, often walking 1–3 km to and from the gym. Cycling is another favourite: I've regularly cycled 6.5 km each way to the gym, sometimes adding extra trips for grocery shopping.</p>
         </div>
         <div class="hob-imgs cols3" style="margin-top:0">
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
+          <div class="img-ph clickable-img" data-src="personal website/hobbies/gym and sports/4.png"><img src="personal website/hobbies/gym and sports/4.png" alt="Gym photo"></div>
+          <div class="img-ph clickable-img" data-src="personal website/hobbies/gym and sports/5.jpg"><img src="personal website/hobbies/gym and sports/5.jpg" alt="Gym photo"></div>
+          <div class="img-ph clickable-img" data-src="personal website/hobbies/gym and sports/6.JPG"><img src="personal website/hobbies/gym and sports/6.JPG" alt="Gym photo"></div>
         </div>
       </div>
 
@@ -650,11 +662,10 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
           <div class="hob-icon">🎨</div>
         </div>
         <div class="hob-imgs cols3" style="grid-template-columns:repeat(2,1fr)">
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
+          <div class="img-ph clickable-img" data-src="personal website/hobbies/arts/1.png"><img src="personal website/hobbies/arts/1.png" alt="Art photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="img-ph clickable-img" data-src="personal website/hobbies/arts/2.png"><img src="personal website/hobbies/arts/2.png" alt="Art photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="img-ph clickable-img" data-src="personal website/hobbies/arts/3.png"><img src="personal website/hobbies/arts/3.png" alt="Art photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="img-ph clickable-img" data-src="personal website/hobbies/arts/4.png"><img src="personal website/hobbies/arts/4.png" alt="Art photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
         </div>
         <div class="hob-body">
           <p>Art and design are part of my lifestyle and personality. After high school, I joined the Faculty of Applied Arts for a year before transferring to Computer Science — to combine creativity with technology. My journey started at 14 when I discovered Photoshop and was amazed that something I designed on a screen could become a real printed product or campaign.</p>
@@ -672,16 +683,16 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
           <div class="hob-icon">🍳</div>
         </div>
         <div class="cook-slider">
-          <div class="cook-slide img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="cook-slide img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="cook-slide img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="cook-slide img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="cook-slide img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="cook-slide img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="cook-slide img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="cook-slide img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="cook-slide img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="cook-slide img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
+          <div class="cook-slide img-ph clickable-img" data-src="personal website/hobbies/food/1.png"><img src="personal website/hobbies/food/1.png" alt="Food photo"></div>
+          <div class="cook-slide img-ph clickable-img" data-src="personal website/hobbies/food/2.png"><img src="personal website/hobbies/food/2.png" alt="Food photo"></div>
+          <div class="cook-slide img-ph clickable-img" data-src="personal website/hobbies/food/3.png"><img src="personal website/hobbies/food/3.png" alt="Food photo"></div>
+          <div class="cook-slide img-ph clickable-img" data-src="personal website/hobbies/food/4.png"><img src="personal website/hobbies/food/4.png" alt="Food photo"></div>
+          <div class="cook-slide img-ph clickable-img" data-src="personal website/hobbies/food/5.png"><img src="personal website/hobbies/food/5.png" alt="Food photo"></div>
+          <div class="cook-slide img-ph clickable-img" data-src="personal website/hobbies/food/6.png"><img src="personal website/hobbies/food/6.png" alt="Food photo"></div>
+          <div class="cook-slide img-ph clickable-img" data-src="personal website/hobbies/food/7.png"><img src="personal website/hobbies/food/7.png" alt="Food photo"></div>
+          <div class="cook-slide img-ph clickable-img" data-src="personal website/hobbies/food/8.png"><img src="personal website/hobbies/food/8.png" alt="Food photo"></div>
+          <div class="cook-slide img-ph clickable-img" data-src="personal website/hobbies/food/9.png"><img src="personal website/hobbies/food/9.png" alt="Food photo"></div>
+          <div class="cook-slide img-ph clickable-img" data-src="personal website/hobbies/food/10.png"><img src="personal website/hobbies/food/10.png" alt="Food photo"></div>
         </div>
         <div class="hob-body">
           <p>Cooking feels like another form of art to me. I enjoy the creativity behind it — discovering how every ingredient and flavor contributes to the final result. I rarely follow recipes; I prefer inventing and experimenting. Since joining university I've regularly meal-prepped for the week while living in dorms. Friends always ask me for recipes, especially my signature <strong style="color:var(--white)">chicken shawarma Fattah</strong>.</p>
@@ -699,8 +710,8 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
           <div class="hob-icon">🎵</div>
         </div>
         <div class="hob-imgs" style="grid-template-columns:repeat(2,1fr)">
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
+          <div class="img-ph clickable-img" data-src="personal website/hobbies/music/1.png"><img src="personal website/hobbies/music/1.png" alt="Music photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="img-ph clickable-img" data-src="personal website/hobbies/music/2.png"><img src="personal website/hobbies/music/2.png" alt="Music photo" style="width:100%;height:100%;object-fit:cover;display:block"></div>
         </div>
         <div class="hob-body">
           <p>I've always enjoyed singing and deeply appreciate the beauty of sound — voices that naturally carry melody and emotion. During school I learned and played piano, electric piano, accordion, and drums, even performing publicly with the electric piano.</p>
@@ -717,12 +728,10 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
           </div>
           <div class="hob-icon">⚽</div>
         </div>
-        <div class="hob-imgs cols3" style="grid-template-columns:repeat(3,1fr)">
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
+        <div class="hob-imgs" style="grid-template-columns:1fr;padding-bottom:.5rem">
+          <div class="img-ph clickable-img" style="aspect-ratio:16/5" data-src="personal website/hobbies/sports that i can play/1.png">
+            <img src="personal website/hobbies/sports that i can play/1.png" alt="Sports photo" style="width:100%;height:100%;object-fit:cover;display:block">
+          </div>
         </div>
         <div class="skills-list">
           <span class="sk">🏋️ Gym</span><span class="sk">🚶 Walking</span><span class="sk">🏃 Running</span>
@@ -743,11 +752,10 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
           </div>
           <div class="hob-icon">🏍️</div>
         </div>
-        <div class="drive-grid">
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>Bikes</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>Cars</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>Motorcycles</div>
-          <div class="img-ph"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>Beach Buggies</div>
+        <div class="drive-grid" style="grid-template-columns:repeat(3,1fr)">
+          <div class="img-ph clickable-img" data-src="personal website/hobbies/things that i can drive/1.png"><img src="personal website/hobbies/things that i can drive/1.png" alt="Bikes" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="img-ph clickable-img" data-src="personal website/hobbies/things that i can drive/2.png"><img src="personal website/hobbies/things that i can drive/2.png" alt="Cars" style="width:100%;height:100%;object-fit:cover;display:block"></div>
+          <div class="img-ph clickable-img" data-src="personal website/hobbies/things that i can drive/3.png"><img src="personal website/hobbies/things that i can drive/3.png" alt="Motorcycles" style="width:100%;height:100%;object-fit:cover;display:block"></div>
         </div>
         <div class="hob-body"><p style="color:var(--muted);font-size:.8rem">Manual and automatic cars. Experience with motorcycles and off-road vehicles including beach buggies.</p></div>
       </div>
@@ -762,7 +770,9 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
           <div class="hob-icon">♟️</div>
         </div>
         <div class="hob-imgs" style="grid-template-columns:1fr;padding-bottom:.5rem">
-          <div class="img-ph" style="aspect-ratio:16/5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="9"/><path d="M8 12h8M12 8v8"/></svg>photo</div>
+          <div class="img-ph clickable-img" style="aspect-ratio:16/5" data-src="personal website/hobbies/card and board games/1.png">
+            <img src="personal website/hobbies/card and board games/1.png" alt="Card & board game photo" style="width:100%;height:100%;object-fit:cover;display:block">
+          </div>
         </div>
         <div class="game-list">
           <span class="game-pill">♟️ Chess</span>
@@ -810,6 +820,19 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
 <footer>
   [ Ahmed Fikry · Cairo, Egypt ] &nbsp;·&nbsp; © 2026 &nbsp;·&nbsp; Built with code &amp; curiosity &nbsp;·&nbsp; <span style="color:var(--g)">STATUS: ONLINE</span>
 </footer>
+
+<!-- Image Modal -->
+<div class="modal" id="imageModal">
+  <div class="modal-window">
+    <div class="modal-header">
+      <span class="modal-title">📸 Image Viewer</span>
+      <button class="modal-btn" id="modalClose">✕</button>
+    </div>
+    <div class="modal-content">
+      <img class="modal-img" id="modalImage" src="" alt="">
+    </div>
+  </div>
+</div>
 
 <script>
 /* ── MATRIX RAIN ── */
@@ -941,6 +964,23 @@ function se(i){
 /* ── SCROLL REVEAL ── */
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:.08});
 document.querySelectorAll('.rev').forEach(el=>obs.observe(el));
+
+/* ── IMAGE MODAL ── */
+const modal=document.getElementById('imageModal'),modalImg=document.getElementById('modalImage'),modalClose=document.getElementById('modalClose');
+document.querySelectorAll('.clickable-img').forEach(img=>{
+  img.addEventListener('click',()=>{
+    modalImg.src = img.dataset.src || (img.querySelector('img') && img.querySelector('img').src) || '';
+    modal.classList.add('open');
+    document.body.style.overflow='hidden';
+  });
+});
+function closeModal(){
+  modal.classList.remove('open');
+  document.body.style.overflow='';
+}
+modalClose.addEventListener('click',closeModal);
+modal.addEventListener('click',e=>{if(e.target===modal)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.classList.contains('open'))closeModal();});
 </script>
 </body>
 </html>

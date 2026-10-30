@@ -503,6 +503,9 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
 @media(max-width:1024px){.awards{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:768px){
   .paper{grid-template-columns:1fr}.paper-side{border-left:none;border-top:1px solid var(--border)}
+  .paper-main,.paper-side{min-width:0;padding:1.6rem 1.2rem}
+  .paper-actions .btn{word-break:break-all;max-width:100%}
+  .paper::before{display:none}
   .cred-grid{grid-template-columns:1fr}.awards{grid-template-columns:repeat(2,1fr)}
   .proj-card.featured{grid-column:span 1}
   .hero-stats{flex-wrap:wrap}.stat{flex:1 0 40%}

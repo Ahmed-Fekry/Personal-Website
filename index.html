@@ -157,13 +157,28 @@ section{position:relative;z-index:10}
 
 /* ─── EXPERIENCE ─────────────────────────── */
 #experience{padding:7rem 0}
-.exp-grid{display:grid;grid-template-columns:240px 1fr;margin-top:3rem;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-.exp-tabs{border-right:1px solid var(--border);background:var(--surface)}
-.exp-tab{padding:1.1rem 1.4rem;font-family:var(--mono);font-size:.68rem;color:var(--muted);cursor:none;border:none;background:none;text-align:left;width:100%;transition:all .2s;border-left:2px solid transparent;letter-spacing:.03em}
-.exp-tab:hover{color:var(--white);background:rgba(0,255,65,.03)}
-.exp-tab.on{color:var(--g);border-left-color:var(--g);background:rgba(0,255,65,.05)}
-.exp-tab-date{display:block;font-size:.58rem;color:var(--muted);margin-top:.2rem}
-.exp-panel{display:none;padding:2.5rem;animation:fi .3s}
+.exp-grid{display:grid;grid-template-columns:270px 1fr;margin-top:3rem;border:1px solid var(--border2);border-radius:var(--radius);overflow:hidden;background:rgba(6,10,6,.92);backdrop-filter:blur(6px);box-shadow:0 0 40px rgba(0,0,0,.6)}
+.exp-tabs{border-right:1px solid var(--border);background:var(--surface);counter-reset:t;display:flex;flex-direction:column}
+.exp-tabs-h{font-family:var(--mono);font-size:.56rem;color:var(--muted);letter-spacing:.18em;padding:.9rem 1.2rem;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.exp-tabs-h b{color:var(--g);font-weight:400}
+.exp-tab{position:relative;padding:1rem 2.4rem 1rem 3.1rem;font-family:var(--mono);font-size:.7rem;color:var(--light);cursor:none;border:none;background:none;text-align:left;width:100%;transition:all .2s;border-left:2px solid transparent;border-bottom:1px solid var(--border);letter-spacing:.03em}
+.exp-tab:last-child{border-bottom:none}
+.exp-tab::before{counter-increment:t;content:counter(t,decimal-leading-zero);position:absolute;left:1.2rem;top:1.05rem;font-size:.6rem;color:var(--muted);letter-spacing:.1em;transition:color .2s}
+.exp-tab::after{content:'→';position:absolute;right:1.1rem;top:50%;transform:translate(-6px,-50%);font-size:.75rem;color:var(--g);opacity:0;transition:all .25s}
+.exp-tab:hover{color:var(--white);background:rgba(0,255,65,.04)}
+.exp-tab:hover::after{opacity:.6;transform:translate(0,-50%)}
+.exp-tab:hover::before{color:var(--g)}
+.exp-tab.on{color:var(--g);border-left-color:var(--g);background:rgba(0,255,65,.07);text-shadow:var(--tglow)}
+.exp-tab.on::before{color:var(--g)}
+.exp-tab.on::after{opacity:1;transform:translate(0,-50%)}
+.exp-tab-date{display:block;font-size:.58rem;color:var(--muted);margin-top:.2rem;text-shadow:none}
+.exp-panels{position:relative;background:rgba(12,17,12,.85)}
+.exp-pager{display:flex;align-items:center;justify-content:space-between;padding:.8rem 2.5rem;border-bottom:1px solid var(--border);font-family:var(--mono);font-size:.58rem;color:var(--muted);letter-spacing:.16em}
+.exp-pager b{color:var(--g);font-weight:400}
+.exp-pager-btns{display:flex;gap:.4rem}
+.exp-pager-btns button{font-family:var(--mono);font-size:.62rem;color:var(--light);background:none;border:1px solid var(--border);border-radius:3px;padding:.2rem .6rem;cursor:none;transition:all .2s}
+.exp-pager-btns button:hover{border-color:var(--g);color:var(--g);box-shadow:var(--glow)}
+.exp-panel{display:none;padding:2.2rem 2.5rem 2.5rem;animation:fi .3s}
 .exp-panel.on{display:block}
 @keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .exp-co{font-family:var(--mono);font-size:.68rem;color:var(--g);letter-spacing:.08em;margin-bottom:.3rem}
@@ -297,9 +312,13 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
   .aring:nth-child(1){width:300px;height:300px}
   .aring:nth-child(2){width:340px;height:340px}
   .exp-grid{grid-template-columns:1fr}
-  .exp-tabs{display:flex;flex-wrap:wrap;border-right:none;border-bottom:1px solid var(--border)}
-  .exp-tab{border-left:none;border-bottom:2px solid transparent;padding:.8rem 1rem;font-size:.62rem;flex:1 0 auto}
+  .exp-tabs{display:flex;flex-direction:row;flex-wrap:wrap;border-right:none;border-bottom:1px solid var(--border)}
+  .exp-tabs-h{flex:1 0 100%}
+  .exp-tab{border-left:none;border-bottom:2px solid transparent;padding:.8rem 1rem .8rem 2.2rem;font-size:.62rem;flex:1 0 auto}
+  .exp-tab::before{left:.8rem;top:.85rem}
+  .exp-tab::after{display:none}
   .exp-tab.on{border-left:none;border-bottom-color:var(--g)}
+  .exp-pager{padding:.7rem 1.5rem}
   .exp-panel{padding:1.5rem}
   .proj-grid{grid-template-columns:1fr}
   .startup-gallery{grid-template-columns:repeat(3,1fr)}
@@ -667,13 +686,15 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
     <h2 class="sec-h rev d1">Where I've <span class="accent">Operated</span></h2>
     <div class="exp-grid rev d2">
       <div class="exp-tabs">
+        <div class="exp-tabs-h"><span>// <b>5</b> ROLES</span><span>SELECT ONE ↓</span></div>
         <button class="exp-tab on" onclick="se(0)">Vodafone Egypt<span class="exp-tab-date">Jul – Sep 2026</span></button>
         <button class="exp-tab" onclick="se(1)">Crédit Agricole<span class="exp-tab-date">Aug – Sep 2025</span></button>
         <button class="exp-tab" onclick="se(2)">Paycoo.app<span class="exp-tab-date">Jun 2023 – Present</span></button>
         <button class="exp-tab" onclick="se(3)">Boyot<span class="exp-tab-date">Jul 2024 – Oct 2026</span></button>
         <button class="exp-tab" onclick="se(4)">CodeX Solutions<span class="exp-tab-date">Jan 2022 – Jan 2025</span></button>
       </div>
-      <div>
+      <div class="exp-panels">
+        <div class="exp-pager"><span>ROLE <b id="exp-cur">01</b> / 05</span><div class="exp-pager-btns"><button onclick="se(-1,true)" aria-label="Previous role">← prev</button><button onclick="se(1,true)" aria-label="Next role">next →</button></div></div>
         <div class="exp-panel on" id="ep0">
           <div class="exp-co">// Telecom · Smart Village, Giza</div>
           <div class="exp-role">Software Testing & Security Intern</div>
@@ -754,23 +775,6 @@ footer{text-align:center;padding:1.8rem 4rem;border-top:1px solid var(--border);
             <a href="https://ieeexplore.ieee.org/document/11717405/" target="_blank" class="proj-link">Read the paper ↗</a>
             <a href="#research" class="proj-link">Details ↓</a>
             <a href="https://github.com/Ahmed-Fekry/V2X-Security-Architecture" target="_blank" class="proj-link">Code ↗</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- HoneySIEM -->
-      <div class="proj-card rev d1">
-        <div class="proj-img shot" style="background-image:url('https://raw.githubusercontent.com/Ahmed-Fekry/honeysiem/main/docs/dashboard.png')">
-          <span class="proj-img-lbl">LIVE DEMO · 7,157 EVENTS</span>
-        </div>
-        <div class="proj-body">
-          <div class="proj-tags"><span class="proj-tag">Python</span><span class="proj-tag">SIEM</span><span class="proj-tag">MITRE ATT&amp;CK</span><span class="proj-tag ai">AI pair-built</span></div>
-          <div class="proj-title">HoneySIEM</div>
-          <div class="proj-desc">A mini-SIEM for SSH honeypots. Ingests Cowrie JSON or a plain OpenSSH auth.log, fingerprints events into SQLite, and runs 12 detection rules mapped to 11 ATT&amp;CK techniques. One week of simulated traffic reconstructs five full intrusions, from brute force to XMRig persistence. Zero runtime dependencies, XSS-safe dashboard, 37 tests in CI.</div>
-          <div class="proj-stat"><span>RULES <b>12</b></span><span>TECHNIQUES <b>11</b></span><span>TESTS <b>37</b></span></div>
-          <div class="proj-links">
-            <a href="https://ahmed-fekry.github.io/honeysiem/" target="_blank" class="proj-link">Live dashboard ↗</a>
-            <a href="https://github.com/Ahmed-Fekry/honeysiem" target="_blank" class="proj-link">GitHub ↗</a>
           </div>
         </div>
       </div>
@@ -1433,9 +1437,13 @@ function tl(){
 }tl();
 
 /* ── EXP TABS ── */
-function se(i){
-  document.querySelectorAll('.exp-tab').forEach((t,j)=>t.classList.toggle('on',i===j));
-  document.querySelectorAll('.exp-panel').forEach((p,j)=>p.classList.toggle('on',i===j));
+let expI=0;
+function se(i,rel){
+  const n=document.querySelectorAll('.exp-tab').length;
+  expI=rel?((expI+i)%n+n)%n:i;
+  document.querySelectorAll('.exp-tab').forEach((t,j)=>t.classList.toggle('on',expI===j));
+  document.querySelectorAll('.exp-panel').forEach((p,j)=>p.classList.toggle('on',expI===j));
+  const c=document.getElementById('exp-cur');if(c)c.textContent=String(expI+1).padStart(2,'0');
 }
 
 /* ── SCROLL REVEAL ── */
